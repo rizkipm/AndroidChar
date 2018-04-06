@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import imastudio.id.co.androidcharexample.R;
 import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ273TipeIndikator;
 
 

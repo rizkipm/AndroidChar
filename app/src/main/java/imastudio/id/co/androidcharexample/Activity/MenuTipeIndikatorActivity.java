@@ -13,6 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import imastudio.id.co.androidcharexample.R;
+import imastudio.id.co.androidcharexample.adapter.AdapterTipeIndikator;
 import imastudio.id.co.androidcharexample.helper.HeroHelper;
 import imastudio.id.co.androidcharexample.helper.No_Internet;
 import imastudio.id.co.androidcharexample.helper.SessionManager;

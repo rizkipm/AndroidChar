@@ -1,12 +1,9 @@
 package imastudio.id.co.androidcharexample.network;
 
 
+import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.RssJ273GetAllIndikator;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import superheroku.id.co.kolakaapps.modelapi.RssJ113Menu.RssJ113Menu;
-import superheroku.id.co.kolakaapps.modelapi.RssJ113Wisata.RssJ113Wisata;
-import superheroku.id.co.kolakaapps.modelapi.RssJ273GetAllIndikator.RssJ273GetAllIndikator;
-
 /**
  * Created by Blackswan on 9/12/2017.
  */
@@ -14,12 +11,12 @@ import superheroku.id.co.kolakaapps.modelapi.RssJ273GetAllIndikator.RssJ273GetAl
 public interface RestApi {
 
 
-
-    @GET("menu/json")
-    Call<RssJ113Menu> getMenuHome();
-
-    @GET("wisata/json")
-    Call<RssJ113Wisata> getMenuWisata();
+//
+//    @GET("menu/json")
+//    Call<RssJ113Menu> getMenuHome();
+//
+//    @GET("wisata/json")
+//    Call<RssJ113Wisata> getMenuWisata();
 
     @GET("getAllTipeIndikator")
     Call<RssJ273GetAllIndikator> getAllTipeIndikator();
