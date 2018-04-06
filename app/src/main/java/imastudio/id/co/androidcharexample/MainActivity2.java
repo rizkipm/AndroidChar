@@ -3,7 +3,6 @@ package imastudio.id.co.androidcharexample;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import imastudio.id.co.androidcharexample.model.indikatorbyId.DataItem;
-import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54IndikatorByiD;
+import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54IndikatorById;
 import imastudio.id.co.androidcharexample.network.MyRetrofitClient;
 import imastudio.id.co.androidcharexample.network.RestApi;
 import retrofit2.Call;
@@ -55,10 +54,10 @@ public class MainActivity2 extends AppCompatActivity {
             RestApi api = MyRetrofitClient.getInstanceRetrofit();
 
 
-            Call<RssJ54IndikatorByiD> call = api.getIndikatorByTipe(idTipe);
-            call.enqueue(new Callback<RssJ54IndikatorByiD>() {
+            Call<RssJ54IndikatorById> call = api.getIndikatorByTipe(idTipe);
+            call.enqueue(new Callback<RssJ54IndikatorById>() {
                 @Override
-                public void onResponse(Call<RssJ54IndikatorByiD> call, Response<RssJ54IndikatorByiD> response) {
+                public void onResponse(Call<RssJ54IndikatorById> call, Response<RssJ54IndikatorById> response) {
 
                     String r = response.body().getResult();
 //                String nData = response.body().getDataProfilUSer().getLevel();
@@ -74,6 +73,8 @@ public class MainActivity2 extends AppCompatActivity {
                         chart.setDescription("Grafik Potensi Wilayah ");
                         chart.animateXY(20000, 20000);
                         chart.invalidate();
+
+                         
 //
 
 
@@ -86,7 +87,7 @@ public class MainActivity2 extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<RssJ54IndikatorByiD> call, Throwable t) {
+                public void onFailure(Call<RssJ54IndikatorById> call, Throwable t) {
 
                 }
             });

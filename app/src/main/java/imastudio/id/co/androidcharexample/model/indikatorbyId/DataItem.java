@@ -3,6 +3,7 @@ package imastudio.id.co.androidcharexample.model.indikatorbyId;
 
 import com.google.gson.annotations.SerializedName;
 
+
 public class DataItem{
 
 	@SerializedName("jml_indikator")
@@ -11,11 +12,17 @@ public class DataItem{
 	@SerializedName("id_tipe_indikator")
 	private String idTipeIndikator;
 
+	@SerializedName("tipe_indikator")
+	private String tipeIndikator;
+
 	@SerializedName("th_indikator")
 	private String thIndikator;
 
 	@SerializedName("id_indikator")
 	private String idIndikator;
+
+	@SerializedName("id")
+	private String id;
 
 	public void setJmlIndikator(String jmlIndikator){
 		this.jmlIndikator = jmlIndikator;
@@ -31,6 +38,14 @@ public class DataItem{
 
 	public String getIdTipeIndikator(){
 		return idTipeIndikator;
+	}
+
+	public void setTipeIndikator(String tipeIndikator){
+		this.tipeIndikator = tipeIndikator;
+	}
+
+	public String getTipeIndikator(){
+		return tipeIndikator;
 	}
 
 	public void setThIndikator(String thIndikator){
@@ -49,14 +64,24 @@ public class DataItem{
 		return idIndikator;
 	}
 
+	public void setId(String id){
+		this.id = id;
+	}
+
+	public String getId(){
+		return id;
+	}
+
 	@Override
  	public String toString(){
 		return 
 			"DataItem{" + 
 			"jml_indikator = '" + jmlIndikator + '\'' + 
 			",id_tipe_indikator = '" + idTipeIndikator + '\'' + 
+			",tipe_indikator = '" + tipeIndikator + '\'' + 
 			",th_indikator = '" + thIndikator + '\'' + 
 			",id_indikator = '" + idIndikator + '\'' + 
+			",id = '" + id + '\'' + 
 			"}";
 		}
 }
