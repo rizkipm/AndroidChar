@@ -6,7 +6,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import superheroku.id.co.kolakaapps.R;
+import imastudio.id.co.androidcharexample.R;
 
 
 /**

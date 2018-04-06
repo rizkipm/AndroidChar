@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import superheroku.id.co.kolakaapps.R;
+import imastudio.id.co.androidcharexample.R;
 
 
 public class MyFuction extends AppCompatActivity {

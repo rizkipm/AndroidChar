@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<translate android:fromXDelta="0%"
+    android:toXDelta="5%"
+    android:interpolator="@anim/getaran"
+    android:duration="1000"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+</translate>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#fff">
+
+
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView6"
+            android:src="@drawable/ic_not_interested_black_48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Informasi"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:id="@+id/textView18"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:layout_gravity="center_horizontal|top" />
+        </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ooopss!!"
+        android:id="@+id/textView23"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tidak ada akses internet"
+        android:id="@+id/textView25"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TUTUP"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+
+        android:id="@+id/btnNoTutup"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+</RelativeLayout>
