@@ -3,6 +3,7 @@ package imastudio.id.co.androidcharexample;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -16,9 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import imastudio.id.co.androidcharexample.Activity.MenuTipeIndikatorActivity;
+import imastudio.id.co.androidcharexample.adapter.AdapterTipeIndikator;
 import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ54GetAllIndikator;
-import imastudio.id.co.androidcharexample.model.indikatorbyId.DataItem;
-import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54IndikatorById;
+import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.RssJ54GetAllIndikator;
+import imastudio.id.co.androidcharexample.model.indikatorbyId.DataItemJ54ByIndikatorType;
+import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54GetIndikatorByTipe;
 import imastudio.id.co.androidcharexample.network.MyRetrofitClient;
 import imastudio.id.co.androidcharexample.network.RestApi;
 import retrofit2.Call;
@@ -27,17 +30,25 @@ import retrofit2.Response;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    public static List<DataItem> dataIndikator;
+    public static List<DataItemJ54ByIndikatorType> dataIndikator;
+    public static List<DataItemJ54GetAllIndikator> dataItemJ23RiwayatLelangs;
 
+    ArrayList<BarEntry> valueSet1;
     DataItemJ54GetAllIndikator dataItemGet;
     String idTipe;
     BarChart chart;
+    Entries models;
+    int start, end;
+    int month, year;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
          chart = (BarChart) findViewById(R.id.chart);
+        models = new Entries();
+        valueSet1 = new ArrayList<>();
+        dataIndikator = new ArrayList<>();
 
 
 
@@ -50,7 +61,56 @@ public class MainActivity2 extends AppCompatActivity {
 
         getIndikatorByTipe();
 
+        getListData();
 
+    }
+
+    private void getListData() {
+        try {
+            RestApi api = MyRetrofitClient.getInstanceRetrofit2();
+
+
+            Call<RssJ54GetIndikatorByTipe> call = api.getIndikatorByTipe(idTipe);
+            call.enqueue(new Callback<RssJ54GetIndikatorByTipe>() {
+                @Override
+                public void onResponse(Call<RssJ54GetIndikatorByTipe> call, Response<RssJ54GetIndikatorByTipe> response) {
+//                    Log.d("onResponse", response.body().toString());
+
+                    String r = response.body().getResult();
+//                String nData = response.body().getDataProfilUSer().getLevel();
+                    Log.d("adaa22", response.body().toString());
+
+                    if (r.equalsIgnoreCase("true")) {
+
+
+//                        dataItemJ23RiwayatLelangs = response.body().getData();
+////                    layoutManager = new LinearLayoutManager(getApplicationContext());
+//                        AdapterTipeIndikator recyclerViewAdapter =
+//                                new AdapterTipeIndikator(dataItemJ23RiwayatLelangs, MenuTipeIndikatorActivity.this);
+//                        recyclerView.setLayoutManager(new LinearLayoutManager(MenuTipeIndikatorActivity.this));
+//
+////                    recyclerView.setLayoutManager(layoutManager);
+//////                        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+//
+//                        recyclerView.setAdapter(recyclerViewAdapter);
+
+                    }else {
+
+                    }
+
+
+
+                }
+
+                @Override
+                public void onFailure(Call<RssJ54GetIndikatorByTipe> call, Throwable t) {
+
+                }
+            });
+
+//
+        } catch (Exception e) {
+        }
     }
 
     private void  getIndikatorByTipe() {
@@ -58,14 +118,14 @@ public class MainActivity2 extends AppCompatActivity {
             RestApi api = MyRetrofitClient.getInstanceRetrofit();
 
 
-            Call<RssJ54IndikatorById> call = api.getIndikatorByTipe(idTipe);
-            call.enqueue(new Callback<RssJ54IndikatorById>() {
+            Call<RssJ54GetIndikatorByTipe> call = api.getIndikatorByTipe(idTipe);
+            call.enqueue(new Callback<RssJ54GetIndikatorByTipe>() {
                 @Override
-                public void onResponse(Call<RssJ54IndikatorById> call, Response<RssJ54IndikatorById> response) {
+                public void onResponse(Call<RssJ54GetIndikatorByTipe> call, Response<RssJ54GetIndikatorByTipe> response) {
 
                     String r = response.body().getResult();
 //                String nData = response.body().getDataProfilUSer().getLevel();
-                    Log.d("adaa", response.body().toString());
+                    Log.d("adaa11", response.body().toString());
 
                     if (r.equalsIgnoreCase("true")) {
 
@@ -79,23 +139,18 @@ public class MainActivity2 extends AppCompatActivity {
                         chart.invalidate();
 
 
-                        for (int i = 0; i < dataIndikator.size(); i++) {
+                        for (int i = 0;  dataIndikator.size() > 0; i++) {
                             ArrayList<BarDataSet> dataSets = null;
 
                             ArrayList<BarEntry> valueSet1 = new ArrayList<>();
-//                            BarEntry v1e1 = new BarEntry(Float.parseFloat(dataIndikator.getThIndikator()), Integer.parseInt(dataItem.getJmlIndikator())); // Jan
-//                            valueSet1.add(v1e1);
+                            BarEntry v1e1 = new BarEntry(10, 1); // Jan
+                            valueSet1.add(v1e1);
 
-
-
-//                            BarDataSet barDataSet1 = new BarDataSet(valueSet1, dataIndikator.getTipeIndikator());
-//                            barDataSet1.setColor(Color.rgb(0, 155, 0));
+                            BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Potensi Wilayah");
+                            barDataSet1.setColors(ColorTemplate.COLORFUL_COLORS);
 
                             dataSets = new ArrayList<>();
-//                            dataSets.add(barDataSet1);
-
-
-
+                            dataSets.add(barDataSet1);
 
 
                         }
@@ -103,6 +158,7 @@ public class MainActivity2 extends AppCompatActivity {
                         for (int i = 0; i < dataIndikator.size(); i++) {
                             ArrayList<String> xAxis = new ArrayList<>();
 //                            xAxis.add(dataItem.getThIndikator());
+                            xAxis.add("thn");
                         }
 
 
@@ -115,7 +171,7 @@ public class MainActivity2 extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<RssJ54IndikatorById> call, Throwable t) {
+                public void onFailure(Call<RssJ54GetIndikatorByTipe> call, Throwable t) {
 
                 }
             });
@@ -175,5 +231,47 @@ public class MainActivity2 extends AppCompatActivity {
         xAxis.add("KP");
         xAxis.add("PTN");
         return xAxis;
+    }
+
+    class Entries{
+        List<BarEntry> entriesIncome = new ArrayList<>();
+        List<BarEntry> entriesPayment = new ArrayList<>();
+
+        public List<BarEntry> getEntriesIncome() {
+            return entriesIncome;
+        }
+
+        public List<BarEntry> getEntriesPayment() {
+            return entriesPayment;
+        }
+
+        public void setEntriesIncome(List<BarEntry> entriesIncome) {
+            this.entriesIncome = entriesIncome;
+        }
+
+        public void setEntriesPayment(List<BarEntry> entriesPayment) {
+            this.entriesPayment = entriesPayment;
+        }
+    }
+
+    class Data{
+        float sum;
+        int date;
+
+        public void setDate(int date) {
+            this.date = date;
+        }
+
+        public void setSum(float sum) {
+            this.sum = sum;
+        }
+
+        public float getSum() {
+            return sum;
+        }
+
+        public int getDate() {
+            return date;
+        }
     }
 }

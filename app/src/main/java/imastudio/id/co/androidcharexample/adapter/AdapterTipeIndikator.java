@@ -16,18 +16,18 @@ import java.util.List;
 
 import imastudio.id.co.androidcharexample.MainActivity2;
 import imastudio.id.co.androidcharexample.R;
-import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ273TipeIndikator;
+import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ54GetAllIndikator;
 
 
 //ini class untuk memindahkan data ke recylerview dan juga custom recylerview
 public class AdapterTipeIndikator extends RecyclerView.Adapter<AdapterTipeIndikator.MyHolder> implements ListAdapter {
 
-    List<DataItemJ273TipeIndikator> data;
+    List<DataItemJ54GetAllIndikator> data;
     FragmentActivity c;
 
 
 
-    public AdapterTipeIndikator(List<DataItemJ273TipeIndikator> data, FragmentActivity c) {
+    public AdapterTipeIndikator(List<DataItemJ54GetAllIndikator> data, FragmentActivity c) {
         this.data = data;
         this.c = c;
     }

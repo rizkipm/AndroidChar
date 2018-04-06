@@ -1,8 +1,8 @@
 package imastudio.id.co.androidcharexample.network;
 
 
-import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.RssJ273GetAllIndikator;
-import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54IndikatorById;
+import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.RssJ54GetAllIndikator;
+import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54GetIndikatorByTipe;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -24,12 +24,12 @@ public interface RestApi {
 //    Call<RssJ113Wisata> getMenuWisata();
 
     @GET("getAllTipeIndikator")
-    Call<RssJ273GetAllIndikator> getAllTipeIndikator();
+    Call<RssJ54GetAllIndikator> getAllTipeIndikator();
 
 
     @FormUrlEncoded
     @POST("getIndikatorByTipe")
-    Call<RssJ54IndikatorById> getIndikatorByTipe(
+    Call<RssJ54GetIndikatorByTipe> getIndikatorByTipe(
             @Field("id_tipe_indikator") String id_tipe_indikator
 
     );

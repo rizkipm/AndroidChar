@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 
-public class RssJ54IndikatorById{
+public class RssJ54GetIndikatorByTipe{
 
 	@SerializedName("result")
 	private String result;
@@ -14,7 +14,7 @@ public class RssJ54IndikatorById{
 	private String msg;
 
 	@SerializedName("data")
-	private List<DataItem> data;
+	private List<DataItemJ54ByIndikatorType> data;
 
 	public void setResult(String result){
 		this.result = result;
@@ -32,18 +32,18 @@ public class RssJ54IndikatorById{
 		return msg;
 	}
 
-	public void setData(List<DataItem> data){
+	public void setData(List<DataItemJ54ByIndikatorType> data){
 		this.data = data;
 	}
 
-	public List<DataItem> getData(){
+	public List<DataItemJ54ByIndikatorType> getData(){
 		return data;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"RssJ54IndikatorById{" + 
+			"RssJ54GetIndikatorByTipe{" + 
 			"result = '" + result + '\'' + 
 			",msg = '" + msg + '\'' + 
 			",data = '" + data + '\'' + 

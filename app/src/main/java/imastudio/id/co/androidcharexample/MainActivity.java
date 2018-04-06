@@ -46,21 +46,6 @@ public class MainActivity extends AppCompatActivity {
         BarEntry v1e7 = new BarEntry(69.97f, 6); // Jun
         valueSet1.add(v1e7);
 
-//        ArrayList<BarEntry> valueSet2 = new ArrayList<>();
-//        BarEntry v2e1 = new BarEntry(67.000f, 0); // Jan
-//        valueSet2.add(v2e1);
-//        BarEntry v2e2 = new BarEntry(69.000f, 1); // Feb
-//        valueSet2.add(v2e2);
-//        BarEntry v2e3 = new BarEntry(68.000f, 2); // Mar
-//        valueSet2.add(v2e3);
-//        BarEntry v2e4 = new BarEntry(275682.000f, 3); // Apr
-//        valueSet2.add(v2e4);
-////        BarEntry v2e5 = new BarEntry(69.000f, 4); // May
-////        valueSet2.add(v2e5);
-//        BarEntry v2e6 = new BarEntry(70.000f, 5); // Jun
-//        valueSet2.add(v2e6);
-//        BarEntry v2e7 = new BarEntry(320897.000f, 6); // Jun
-//        valueSet2.add(v2e7);
 
         BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Angka Harapan Hidup");
 //        barDataSet1.setColor(Color.rgb(0, 155, 0));
