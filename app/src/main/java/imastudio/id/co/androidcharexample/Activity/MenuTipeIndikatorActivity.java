@@ -15,7 +15,6 @@ import butterknife.ButterKnife;
 import imastudio.id.co.androidcharexample.R;
 import imastudio.id.co.androidcharexample.adapter.AdapterTipeIndikator;
 import imastudio.id.co.androidcharexample.helper.HeroHelper;
-import imastudio.id.co.androidcharexample.helper.No_Internet;
 import imastudio.id.co.androidcharexample.helper.SessionManager;
 import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ273TipeIndikator;
 import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.RssJ273GetAllIndikator;
@@ -38,23 +37,16 @@ public class MenuTipeIndikatorActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         dataItemJ23RiwayatLelangs = new ArrayList<>();
 
-        if (!HeroHelper.isOnline(getApplicationContext())) {
-            startActivity(new Intent(getApplicationContext(), No_Internet.class));
-           finish();
 
-        } else {
 
             getListData();
 
-        }
     }
 
     private void getListData() {
         try {
             RestApi api = MyRetrofitClient.getInstanceRetrofit2();
-            SessionManager sesi = new SessionManager(getApplicationContext());
-            String nUser = sesi.getIdUser();
-            Log.i("RSMUser : ", nUser);
+
 
             Call<RssJ273GetAllIndikator> call = api.getAllTipeIndikator();
             call.enqueue(new Callback<RssJ273GetAllIndikator>() {

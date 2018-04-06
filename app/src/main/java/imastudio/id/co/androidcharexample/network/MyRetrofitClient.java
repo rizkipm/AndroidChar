@@ -6,9 +6,9 @@ package imastudio.id.co.androidcharexample.network;
 
 
 
+import imastudio.id.co.androidcharexample.helper.MyConstant;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import superheroku.id.co.kolakaapps.helper.MyConstant;
 
 /**
  * Created by Blackswan on 9/12/2017.
