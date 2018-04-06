@@ -12,18 +12,17 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import imastudio.id.co.androidcharexample.R;
+import imastudio.id.co.androidcharexample.helper.HeroHelper;
+import imastudio.id.co.androidcharexample.helper.No_Internet;
+import imastudio.id.co.androidcharexample.helper.SessionManager;
+import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ273TipeIndikator;
+import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.RssJ273GetAllIndikator;
+import imastudio.id.co.androidcharexample.network.MyRetrofitClient;
+import imastudio.id.co.androidcharexample.network.RestApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import superheroku.id.co.kolakaapps.R;
-import superheroku.id.co.kolakaapps.adapter.AdapterTipeIndikator;
-import superheroku.id.co.kolakaapps.helper.HeroHelper;
-import superheroku.id.co.kolakaapps.helper.No_Internet;
-import superheroku.id.co.kolakaapps.helper.SessionManager;
-import superheroku.id.co.kolakaapps.modelapi.RssJ273GetAllIndikator.DataItemJ273TipeIndikator;
-import superheroku.id.co.kolakaapps.modelapi.RssJ273GetAllIndikator.RssJ273GetAllIndikator;
-import superheroku.id.co.kolakaapps.network.MyRetrofitClient;
-import superheroku.id.co.kolakaapps.network.RestApi;
 
 public class MenuTipeIndikatorActivity extends AppCompatActivity {
     public static List<DataItemJ273TipeIndikator> dataItemJ23RiwayatLelangs;
