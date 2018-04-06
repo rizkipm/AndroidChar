@@ -1,11 +1,9 @@
 package imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator;
 
+import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-
-public class RssJ273GetAllIndikator{
+public class RssJ54GetAllIndikator{
 
 	@SerializedName("result")
 	private String result;
@@ -14,7 +12,7 @@ public class RssJ273GetAllIndikator{
 	private String msg;
 
 	@SerializedName("data")
-	private List<DataItemJ273TipeIndikator> data;
+	private List<DataItemJ54GetAllIndikator> data;
 
 	public void setResult(String result){
 		this.result = result;
@@ -32,18 +30,18 @@ public class RssJ273GetAllIndikator{
 		return msg;
 	}
 
-	public void setData(List<DataItemJ273TipeIndikator> data){
+	public void setData(List<DataItemJ54GetAllIndikator> data){
 		this.data = data;
 	}
 
-	public List<DataItemJ273TipeIndikator> getData(){
+	public List<DataItemJ54GetAllIndikator> getData(){
 		return data;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"RssJ273GetAllIndikator{" + 
+			"RssJ54GetAllIndikator{" + 
 			"result = '" + result + '\'' + 
 			",msg = '" + msg + '\'' + 
 			",data = '" + data + '\'' + 

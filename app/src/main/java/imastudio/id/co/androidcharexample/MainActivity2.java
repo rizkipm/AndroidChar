@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -14,6 +15,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+import imastudio.id.co.androidcharexample.Activity.MenuTipeIndikatorActivity;
+import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ54GetAllIndikator;
 import imastudio.id.co.androidcharexample.model.indikatorbyId.DataItem;
 import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54IndikatorById;
 import imastudio.id.co.androidcharexample.network.MyRetrofitClient;
@@ -26,7 +29,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     public static List<DataItem> dataIndikator;
 
-    DataItem dataItem;
+    DataItemJ54GetAllIndikator dataItemGet;
     String idTipe;
     BarChart chart;
 
@@ -40,9 +43,10 @@ public class MainActivity2 extends AppCompatActivity {
 
         int posisi = getIntent().getIntExtra("posisi", 0);
         //get variable array dari request fragment
-        dataItem =  MainActivity2.dataIndikator.get(posisi);
+        dataItemGet =  MenuTipeIndikatorActivity.dataItemJ23RiwayatLelangs.get(posisi);
 
-        idTipe = dataItem.getIdTipeIndikator();
+        idTipe = dataItemGet.getId();
+        Toast.makeText(getApplicationContext(), "id " + idTipe, Toast.LENGTH_LONG).show();
 
         getIndikatorByTipe();
 
@@ -74,8 +78,32 @@ public class MainActivity2 extends AppCompatActivity {
                         chart.animateXY(20000, 20000);
                         chart.invalidate();
 
-                         
-//
+
+                        for (int i = 0; i < dataIndikator.size(); i++) {
+                            ArrayList<BarDataSet> dataSets = null;
+
+                            ArrayList<BarEntry> valueSet1 = new ArrayList<>();
+//                            BarEntry v1e1 = new BarEntry(Float.parseFloat(dataIndikator.getThIndikator()), Integer.parseInt(dataItem.getJmlIndikator())); // Jan
+//                            valueSet1.add(v1e1);
+
+
+
+//                            BarDataSet barDataSet1 = new BarDataSet(valueSet1, dataIndikator.getTipeIndikator());
+//                            barDataSet1.setColor(Color.rgb(0, 155, 0));
+
+                            dataSets = new ArrayList<>();
+//                            dataSets.add(barDataSet1);
+
+
+
+
+
+                        }
+
+                        for (int i = 0; i < dataIndikator.size(); i++) {
+                            ArrayList<String> xAxis = new ArrayList<>();
+//                            xAxis.add(dataItem.getThIndikator());
+                        }
 
 
                     }else {
