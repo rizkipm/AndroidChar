@@ -3,6 +3,8 @@ package imastudio.id.co.androidcharexample;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.util.Log;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -11,20 +13,86 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import imastudio.id.co.androidcharexample.model.indikatorbyId.DataItem;
+import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54IndikatorByiD;
+import imastudio.id.co.androidcharexample.network.MyRetrofitClient;
+import imastudio.id.co.androidcharexample.network.RestApi;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity2 extends AppCompatActivity {
+
+    public static List<DataItem> dataIndikator;
+
+    DataItem dataItem;
+    String idTipe;
+    BarChart chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BarChart chart = (BarChart) findViewById(R.id.chart);
+         chart = (BarChart) findViewById(R.id.chart);
 
-        BarData data = new BarData(getXAxisValues(), getDataSet());
-        chart.setData(data);
-        chart.setDescription("Grafik Potensi Wilayah ");
-        chart.animateXY(20000, 20000);
-        chart.invalidate();
+
+
+        int posisi = getIntent().getIntExtra("posisi", 0);
+        //get variable array dari request fragment
+        dataItem =  MainActivity2.dataIndikator.get(posisi);
+
+        idTipe = dataItem.getIdTipeIndikator();
+
+        getIndikatorByTipe();
+
+
+    }
+
+    private void  getIndikatorByTipe() {
+        try {
+            RestApi api = MyRetrofitClient.getInstanceRetrofit();
+
+
+            Call<RssJ54IndikatorByiD> call = api.getIndikatorByTipe(idTipe);
+            call.enqueue(new Callback<RssJ54IndikatorByiD>() {
+                @Override
+                public void onResponse(Call<RssJ54IndikatorByiD> call, Response<RssJ54IndikatorByiD> response) {
+
+                    String r = response.body().getResult();
+//                String nData = response.body().getDataProfilUSer().getLevel();
+                    Log.d("adaa", response.body().toString());
+
+                    if (r.equalsIgnoreCase("true")) {
+
+
+                        dataIndikator = response.body().getData();
+
+                        BarData data = new BarData(getXAxisValues(), getDataSet());
+                        chart.setData(data);
+                        chart.setDescription("Grafik Potensi Wilayah ");
+                        chart.animateXY(20000, 20000);
+                        chart.invalidate();
+//
+
+
+                    }else {
+
+                    }
+
+
+
+                }
+
+                @Override
+                public void onFailure(Call<RssJ54IndikatorByiD> call, Throwable t) {
+
+                }
+            });
+
+//
+        }catch (Exception e) {}
     }
 
     private ArrayList<BarDataSet> getDataSet() {

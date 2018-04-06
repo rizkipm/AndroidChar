@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import imastudio.id.co.androidcharexample.MainActivity2;
 import imastudio.id.co.androidcharexample.R;
 import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ273TipeIndikator;
 
@@ -43,14 +44,15 @@ public class AdapterTipeIndikator extends RecyclerView.Adapter<AdapterTipeIndika
     @Override
     public void onBindViewHolder(MyHolder holder, final int position) {
         holder.txJudul.setText(data.get(position).getTipeIndikator());
-//        holder.txHarga.setText("Rp. " + data.get(position).getHargaAwalLelang());
-//
-//
 
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent a1 = new Intent(c, MainActivity2.class);
+                a1.putExtra("posisi",position);
+                c.startActivity(a1);
 
 
 
