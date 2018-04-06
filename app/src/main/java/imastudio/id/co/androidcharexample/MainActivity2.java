@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -33,16 +35,17 @@ public class MainActivity2 extends AppCompatActivity {
     String idTipe;
     BarChart chart;
     ArrayList<BarDataSet> dataSets = null;
-    Entries models;
+
     int start, end;
     int month, year;
+    String nYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
          chart = (BarChart) findViewById(R.id.chart);
-        models = new Entries();
+
         dataIndikator = new ArrayList<>();
 
 
@@ -79,33 +82,53 @@ public class MainActivity2 extends AppCompatActivity {
 
 
                         dataIndikator = response.body().getData();
-//                        ?a1 = Float.parseFloat(n1);
+//                      nYear = dataIndikator.get(0).getThIndikator();
 
-                        BarData data = new BarData(getXAxisValues(), getDataSet());
+//                        BarData data = new BarData(getXAxisValues(), getDataSet());
+//                        chart.setData(data);
+//                        chart.setDescription(dataIndikator.get(0).getTipeIndikator());
+//                        chart.animateXY(3000, 3000);
+//                        chart.invalidate();
+                        ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
+
+
+                        for (int i = 0; i < dataIndikator.size(); i++){
+                            DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
+                            float a12 = Float.parseFloat(x.getJmlIndikator());
+                            int a22 = Integer.parseInt(x.getId());
+                            yVals.add(new BarEntry(a12, i));
+                        }
+
+
+                        ArrayList<String> xVals = new ArrayList<String>();
+                        for (int i = 0; i < dataIndikator.size(); i++){
+                            DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
+                            float a12 = Float.parseFloat(x.getJmlIndikator());
+                            String a22 = x.getThIndikator();
+
+                            xVals.add(a22);
+
+                        }
+//                        for(int i = 0; i < mExpenseDB.queryXData().size(); i++)
+//                            xVals.add(mExpenseDB.queryXData().get(i));
+
+                        BarDataSet dataSet = new BarDataSet(yVals, dataIndikator.get(0).getTipeIndikator());
+                        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+                        BarData data = new BarData(xVals, dataSet);
+
+
+                        LimitLine line = new LimitLine(12f, dataIndikator.get(0).getTipeIndikator());
+                        line.setTextSize(12f);
+                        line.setLineWidth(4f);
+                        YAxis leftAxis = chart.getAxisLeft();
+                        leftAxis.addLimitLine(line);
+
                         chart.setData(data);
                         chart.setDescription(dataIndikator.get(0).getTipeIndikator());
-                        chart.animateXY(3000, 3000);
-                        chart.invalidate();
+                        chart.animateY(2000);
 
-//                        for (int i = 0; i < dataIndikator.size(); i++) {
-//                            DataItemJ54ByIndikatorType x = dataIndikator.get(i);
-//                            float a12 = Float.parseFloat(x.getJmlIndikator());
-//                            int a22 = Integer.parseInt(x.getIdIndikator());
-//
-//
-//                            BarEntry v2e1 = new BarEntry(a12, a22); // Jan
-//                            valueSet1.add(v2e1);
-//
-//                            BarDataSet barDataSet1 = new BarDataSet(valueSet1, x.getTipeIndikator());
-//                            barDataSet1.setColors(ColorTemplate.COLORFUL_COLORS);
-//
-//                            dataSets = new ArrayList<>();
-//                            dataSets.add(barDataSet1);
-//
-//                            ArrayList<String> xAxis = new ArrayList<>();
-//                            xAxis.add(x.getThIndikator());
-//
-//                        }
+
 
                     }else {
 
@@ -128,93 +151,6 @@ public class MainActivity2 extends AppCompatActivity {
 
 
 
-    private ArrayList<BarDataSet> getDataSet() {
-        ArrayList<BarDataSet> dataSets = null;
-        ArrayList<BarEntry> valueSet1 = new ArrayList<>();
-
-        for (int i = 0; i < dataIndikator.size(); i++) {
-
-            DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
-            float a12 = Float.parseFloat(x.getJmlIndikator());
-            int a22 = Integer.parseInt(x.getIdIndikator());
-
-
-            BarEntry v2e1 = new BarEntry(a22, (int) a12); // Jan
-            valueSet1.add(v2e1);
-
-            BarDataSet barDataSet1 = new BarDataSet(valueSet1, x.getTipeIndikator());
-            barDataSet1.setColors(ColorTemplate.COLORFUL_COLORS);
-
-            dataSets = new ArrayList<>();
-            dataSets.add(barDataSet1);
-
-
-        }
-
-//        ArrayList<BarEntry> valueSet1 = new ArrayList<>();
-//        BarEntry v1e1 = new BarEntry(37500.000f, 0); // Jan
-//        valueSet1.add(v1e1);
-//        BarEntry v1e2 = new BarEntry(8500.000f, 1); // Feb
-//        valueSet1.add(v1e2);
-//        BarEntry v1e3 = new BarEntry(53040.000f, 2); // Mar
-//        valueSet1.add(v1e3);
-//        BarEntry v1e4 = new BarEntry(16412.000f, 3); // Apr
-//        valueSet1.add(v1e4);
-//        BarEntry v1e5 = new BarEntry(635.000f, 4); // May
-//        valueSet1.add(v1e5);
-//        BarEntry v1e6 = new BarEntry(44062.000f, 5); // Jun
-//        valueSet1.add(v1e6);
-
-//        dataSets = new ArrayList<>();
-//        dataSets.add(barDataSet1);
-//        dataSets.add(barDataSet2);
-        return dataSets;
-    }
-//
-    private ArrayList<String> getXAxisValues() {
-        ArrayList<String> xAxis = new ArrayList<>();
-//        xAxis.add("PT");
-//        xAxis.add("PB");
-//        xAxis.add("PS");
-//        xAxis.add("SDM");
-//        xAxis.add("KP");
-//        xAxis.add("PTN");
-
-        for (int i = 0; i < dataIndikator.size(); i++) {
-            DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
-            float a12 = Float.parseFloat(x.getJmlIndikator());
-            int a22 = Integer.parseInt(x.getIdIndikator());
-
-
-
-            xAxis.add(x.getThIndikator());
-
-
-        }
-
-        return xAxis;
-    }
-
-    class Entries{
-        List<BarEntry> entriesIncome = new ArrayList<>();
-        List<BarEntry> entriesPayment = new ArrayList<>();
-
-        public List<BarEntry> getEntriesIncome() {
-            return entriesIncome;
-        }
-
-        public List<BarEntry> getEntriesPayment() {
-            return entriesPayment;
-        }
-
-        public void setEntriesIncome(List<BarEntry> entriesIncome) {
-            this.entriesIncome = entriesIncome;
-        }
-
-        public void setEntriesPayment(List<BarEntry> entriesPayment) {
-            this.entriesPayment = entriesPayment;
-        }
-    }
 
 
 }
