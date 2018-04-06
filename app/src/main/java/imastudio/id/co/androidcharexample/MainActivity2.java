@@ -34,29 +34,25 @@ public class MainActivity2 extends AppCompatActivity {
     DataItemJ54GetAllIndikator dataItemGet;
     String idTipe;
     BarChart chart;
-    ArrayList<BarDataSet> dataSets = null;
 
     int start, end;
-    int month, year;
-    String nYear;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         chart = (BarChart) findViewById(R.id.chart);
+        chart = (BarChart) findViewById(R.id.chart);
 
         dataIndikator = new ArrayList<>();
 
 
-
         int posisi = getIntent().getIntExtra("posisi", 0);
-        //get variable array dari request fragment
-        dataItemGet =  MenuTipeIndikatorActivity.dataItemJ23RiwayatLelangs.get(posisi);
+
+        dataItemGet = MenuTipeIndikatorActivity.dataItemJ23RiwayatLelangs.get(posisi);
 
         idTipe = dataItemGet.getId();
         Toast.makeText(getApplicationContext(), "id " + idTipe, Toast.LENGTH_LONG).show();
-
 
 
         getListData();
@@ -75,24 +71,17 @@ public class MainActivity2 extends AppCompatActivity {
 //                    Log.d("onResponse", response.body().toString());
 
                     String r = response.body().getResult();
-//                String nData = response.body().getDataProfilUSer().getLevel();
                     Log.d("adaa22", response.body().toString());
 
                     if (r.equalsIgnoreCase("true")) {
 
 
                         dataIndikator = response.body().getData();
-//                      nYear = dataIndikator.get(0).getThIndikator();
 
-//                        BarData data = new BarData(getXAxisValues(), getDataSet());
-//                        chart.setData(data);
-//                        chart.setDescription(dataIndikator.get(0).getTipeIndikator());
-//                        chart.animateXY(3000, 3000);
-//                        chart.invalidate();
                         ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
 
 
-                        for (int i = 0; i < dataIndikator.size(); i++){
+                        for (int i = 0; i < dataIndikator.size(); i++) {
                             DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
                             float a12 = Float.parseFloat(x.getJmlIndikator());
                             int a22 = Integer.parseInt(x.getId());
@@ -101,16 +90,12 @@ public class MainActivity2 extends AppCompatActivity {
 
 
                         ArrayList<String> xVals = new ArrayList<String>();
-                        for (int i = 0; i < dataIndikator.size(); i++){
+                        for (int i = 0; i < dataIndikator.size(); i++) {
                             DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
                             float a12 = Float.parseFloat(x.getJmlIndikator());
                             String a22 = x.getThIndikator();
 
-                            xVals.add(a22);
-
                         }
-//                        for(int i = 0; i < mExpenseDB.queryXData().size(); i++)
-//                            xVals.add(mExpenseDB.queryXData().get(i));
 
                         BarDataSet dataSet = new BarDataSet(yVals, dataIndikator.get(0).getTipeIndikator());
                         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
@@ -129,11 +114,9 @@ public class MainActivity2 extends AppCompatActivity {
                         chart.animateY(2000);
 
 
-
-                    }else {
+                    } else {
 
                     }
-
 
 
                 }
@@ -148,9 +131,6 @@ public class MainActivity2 extends AppCompatActivity {
         } catch (Exception e) {
         }
     }
-
-
-
 
 
 }
