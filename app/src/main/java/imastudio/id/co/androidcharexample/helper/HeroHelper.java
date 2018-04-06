@@ -48,14 +48,12 @@ import java.util.regex.Pattern;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class HeroHelper {
     private static final int DEBUG = 1;
-    public static final String APP = "ima-transfoodeApps";
-    public static final String BASE_URL = "http://profil.smsberjaya.id/";
+    public static final String APP = "ima-";
+    public static final String BASE_URL = "";
 
-    //    public static final String BASE_URL = "http://layanan-awan.com/absen/absen_android/index.php/Api/";
-    //    public static final String BASE_URL = "http://admin.transfood-batam.com/index.php/API/";
-    public static final String BASE_URL_IMAGE = "http://layanan-awan.com/absen/absen_android/uploads/";
-    public static final String BASE_URL_IMAGE_PROFILE = "http://layanan-awan.com/absen/absen_android/photo_profile/";
-    public static final String BASE_URL_UPLOAD = "http://layanan-awan.com/absen/absen_android/";
+   public static final String BASE_URL_IMAGE = "";
+    public static final String BASE_URL_IMAGE_PROFILE = "";
+    public static final String BASE_URL_UPLOAD = "";
 
 
     public static void alert(Context context, String title, String message) {
