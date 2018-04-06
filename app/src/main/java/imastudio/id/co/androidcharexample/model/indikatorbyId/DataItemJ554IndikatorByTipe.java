@@ -3,7 +3,8 @@ package imastudio.id.co.androidcharexample.model.indikatorbyId;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataItemJ54ByIndikatorType {
+
+public class DataItemJ554IndikatorByTipe {
 
 	@SerializedName("jml_indikator")
 	private String jmlIndikator;
@@ -74,7 +75,7 @@ public class DataItemJ54ByIndikatorType {
 	@Override
  	public String toString(){
 		return 
-			"DataItemJ54ByIndikatorType{" +
+			"DataItemJ554IndikatorByTipe{" +
 			"jml_indikator = '" + jmlIndikator + '\'' + 
 			",id_tipe_indikator = '" + idTipeIndikator + '\'' + 
 			",tipe_indikator = '" + tipeIndikator + '\'' + 

@@ -2,7 +2,7 @@ package imastudio.id.co.androidcharexample.network;
 
 
 import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.RssJ54GetAllIndikator;
-import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54GetIndikatorByTipe;
+import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ544IndikatorByTipe;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -29,7 +29,7 @@ public interface RestApi {
 
     @FormUrlEncoded
     @POST("getIndikatorByTipe")
-    Call<RssJ54GetIndikatorByTipe> getIndikatorByTipe(
+    Call<RssJ544IndikatorByTipe> getIndikatorByTipe(
             @Field("id_tipe_indikator") String id_tipe_indikator
 
     );

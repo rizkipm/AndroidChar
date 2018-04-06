@@ -1,9 +1,7 @@
 package imastudio.id.co.androidcharexample;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,11 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import imastudio.id.co.androidcharexample.Activity.MenuTipeIndikatorActivity;
-import imastudio.id.co.androidcharexample.adapter.AdapterTipeIndikator;
 import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.DataItemJ54GetAllIndikator;
-import imastudio.id.co.androidcharexample.model.RssJ273GetAllIndikator.RssJ54GetAllIndikator;
-import imastudio.id.co.androidcharexample.model.indikatorbyId.DataItemJ54ByIndikatorType;
-import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ54GetIndikatorByTipe;
+import imastudio.id.co.androidcharexample.model.indikatorbyId.DataItemJ554IndikatorByTipe;
+import imastudio.id.co.androidcharexample.model.indikatorbyId.RssJ544IndikatorByTipe;
 import imastudio.id.co.androidcharexample.network.MyRetrofitClient;
 import imastudio.id.co.androidcharexample.network.RestApi;
 import retrofit2.Call;
@@ -30,9 +26,9 @@ import retrofit2.Response;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    public static List<DataItemJ54ByIndikatorType> dataIndikator;
+    public static List<DataItemJ554IndikatorByTipe> dataIndikator;
 
-    ArrayList<BarEntry> valueSet1;
+
     DataItemJ54GetAllIndikator dataItemGet;
     String idTipe;
     BarChart chart;
@@ -47,7 +43,6 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main);
          chart = (BarChart) findViewById(R.id.chart);
         models = new Entries();
-        valueSet1 = new ArrayList<>();
         dataIndikator = new ArrayList<>();
 
 
@@ -70,10 +65,10 @@ public class MainActivity2 extends AppCompatActivity {
             RestApi api = MyRetrofitClient.getInstanceRetrofit2();
 
 
-            Call<RssJ54GetIndikatorByTipe> call = api.getIndikatorByTipe(idTipe);
-            call.enqueue(new Callback<RssJ54GetIndikatorByTipe>() {
+            Call<RssJ544IndikatorByTipe> call = api.getIndikatorByTipe(idTipe);
+            call.enqueue(new Callback<RssJ544IndikatorByTipe>() {
                 @Override
-                public void onResponse(Call<RssJ54GetIndikatorByTipe> call, Response<RssJ54GetIndikatorByTipe> response) {
+                public void onResponse(Call<RssJ544IndikatorByTipe> call, Response<RssJ544IndikatorByTipe> response) {
 //                    Log.d("onResponse", response.body().toString());
 
                     String r = response.body().getResult();
@@ -84,11 +79,12 @@ public class MainActivity2 extends AppCompatActivity {
 
 
                         dataIndikator = response.body().getData();
+//                        ?a1 = Float.parseFloat(n1);
 
                         BarData data = new BarData(getXAxisValues(), getDataSet());
                         chart.setData(data);
                         chart.setDescription(dataIndikator.get(0).getTipeIndikator());
-                        chart.animateXY(20000, 20000);
+                        chart.animateXY(3000, 3000);
                         chart.invalidate();
 
 //                        for (int i = 0; i < dataIndikator.size(); i++) {
@@ -120,7 +116,7 @@ public class MainActivity2 extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<RssJ54GetIndikatorByTipe> call, Throwable t) {
+                public void onFailure(Call<RssJ544IndikatorByTipe> call, Throwable t) {
 
                 }
             });
@@ -134,14 +130,16 @@ public class MainActivity2 extends AppCompatActivity {
 
     private ArrayList<BarDataSet> getDataSet() {
         ArrayList<BarDataSet> dataSets = null;
+        ArrayList<BarEntry> valueSet1 = new ArrayList<>();
 
         for (int i = 0; i < dataIndikator.size(); i++) {
-            DataItemJ54ByIndikatorType x = dataIndikator.get(i);
+
+            DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
             float a12 = Float.parseFloat(x.getJmlIndikator());
             int a22 = Integer.parseInt(x.getIdIndikator());
 
 
-            BarEntry v2e1 = new BarEntry(a12, a22); // Jan
+            BarEntry v2e1 = new BarEntry(a22, (int) a12); // Jan
             valueSet1.add(v2e1);
 
             BarDataSet barDataSet1 = new BarDataSet(valueSet1, x.getTipeIndikator());
@@ -183,7 +181,7 @@ public class MainActivity2 extends AppCompatActivity {
 //        xAxis.add("PTN");
 
         for (int i = 0; i < dataIndikator.size(); i++) {
-            DataItemJ54ByIndikatorType x = dataIndikator.get(i);
+            DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
             float a12 = Float.parseFloat(x.getJmlIndikator());
             int a22 = Integer.parseInt(x.getIdIndikator());
 
@@ -218,24 +216,5 @@ public class MainActivity2 extends AppCompatActivity {
         }
     }
 
-    class Data{
-        float sum;
-        int date;
 
-        public void setDate(int date) {
-            this.date = date;
-        }
-
-        public void setSum(float sum) {
-            this.sum = sum;
-        }
-
-        public float getSum() {
-            return sum;
-        }
-
-        public int getDate() {
-            return date;
-        }
-    }
 }
