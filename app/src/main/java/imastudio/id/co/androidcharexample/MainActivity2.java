@@ -85,7 +85,7 @@ public class MainActivity2 extends AppCompatActivity {
                             DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
                             float a12 = Float.parseFloat(x.getJmlIndikator());
                             int a22 = Integer.parseInt(x.getId());
-                            yVals.add(new BarEntry(a12, i));
+                            yVals.add(new BarEntry(Float.parseFloat(dataIndikator.get(i).getJmlIndikator()), i));
                         }
 
 
@@ -93,7 +93,8 @@ public class MainActivity2 extends AppCompatActivity {
                         for (int i = 0; i < dataIndikator.size(); i++) {
                             DataItemJ554IndikatorByTipe x = dataIndikator.get(i);
                             float a12 = Float.parseFloat(x.getJmlIndikator());
-                            String a22 = x.getThIndikator();
+                            String a22 = x.getIdIndikator();
+                            xVals.add(a22);
 
                         }
 
@@ -131,6 +132,9 @@ public class MainActivity2 extends AppCompatActivity {
         } catch (Exception e) {
         }
     }
+
+
+
 
 
 }
