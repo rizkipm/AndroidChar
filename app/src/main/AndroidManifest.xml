@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.PieChartAndroid">
+        <activity android:name=".Activity.CombineLineChart">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
         <activity android:name=".MainActivity2" />
         <!-- <activity android:name=".Activity.AndroidLineChart"></activity> -->
         <!-- <activity android:name=".Activity.PieChartAndroid"></activity> -->
-        <activity android:name=".Activity.CombineLineChart"></activity>
+        <!--<activity android:name=".Activity.CombineLineChart"></activity>-->
     </application>
 
 </manifest>
