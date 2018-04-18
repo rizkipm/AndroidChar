@@ -8,6 +8,7 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BarChart chart = (BarChart) findViewById(R.id.chart);
 
-        BarData data = new BarData(getXAxisValues(), getDataSet());
+        BarData data = new BarData(getXAxisValues(), (IBarDataSet) getDataSet());
         chart.setData(data);
         chart.setDescription("Angka Harapan Hidup");
         chart.animateXY(150, 150);
