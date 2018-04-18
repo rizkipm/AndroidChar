@@ -68,6 +68,8 @@ public class PieChartAndroid extends AppCompatActivity   implements OnChartValue
 
         pieChart.setOnChartValueSelectedListener(this);
 
+        pieChart.animateXY(1400, 1400);
+
     }
 
     @Override
