@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".MainActivity2" />
         <!-- <activity android:name=".Activity.AndroidLineChart"></activity> -->
-        <!--<activity android:name=".Activity.PieChartAndroid"></activity>-->
+        <!-- <activity android:name=".Activity.PieChartAndroid"></activity> -->
+        <activity android:name=".Activity.CombineLineChart"></activity>
     </application>
 
 </manifest>
