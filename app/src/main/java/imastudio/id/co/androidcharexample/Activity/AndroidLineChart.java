@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
@@ -14,9 +15,12 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.Highlight;
+
 
 import java.util.ArrayList;
 
@@ -175,6 +179,7 @@ public class AndroidLineChart extends AppCompatActivity implements
             mChart.highlightValues(null);
     }
 
+
     @Override
     public void onChartLongPressed(MotionEvent me) {
         Log.i("LongPress", "Chart longpressed.");
@@ -219,8 +224,15 @@ public class AndroidLineChart extends AppCompatActivity implements
                 + ", ymax: " + mChart.getYChartMax());
     }
 
+
+
     @Override
     public void onNothingSelected() {
         Log.i("Nothing selected", "Nothing selected.");
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
